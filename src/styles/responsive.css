@@ -1,0 +1,101 @@
+/* ===== Responsive Breakpoints ===== */
+
+/* Mobile Small (max 480px) */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 1rem;
+  }
+  h1 { font-size: var(--text-2xl); }
+  h2 { font-size: var(--text-xl); }
+  h3 { font-size: var(--text-lg); }
+  .section { padding: var(--space-8) 0; }
+  .section-title { font-size: var(--text-xl); }
+  .section-subtitle { font-size: var(--text-sm); }
+  .hide-mobile { display: none !important; }
+}
+
+/* Mobile (max 768px) */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+    --navbar-height: 60px;
+  }
+  h1 { font-size: var(--text-3xl); }
+  .section { padding: var(--space-10) 0; }
+  .section-title { font-size: var(--text-2xl); }
+  .hide-tablet { display: none !important; }
+
+  .btn-lg {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+  }
+}
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+  .hide-desktop-sm { display: none !important; }
+}
+
+/* Desktop (min 1025px) */
+@media (min-width: 1025px) {
+  .show-mobile-only { display: none !important; }
+}
+
+/* Large Desktop (min 1280px) */
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1280px;
+  }
+}
+
+/* ===== Grid Responsive Helpers ===== */
+.grid-responsive-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-responsive-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  .grid-responsive-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-responsive-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+  .grid-responsive-3 {
+    grid-template-columns: 1fr;
+  }
+  .grid-responsive-2 {
+    grid-template-columns: 1fr;
+  }
+}

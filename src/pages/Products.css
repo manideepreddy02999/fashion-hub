@@ -1,0 +1,24 @@
+.products-page { padding: var(--space-8) 0; }
+.products-header { margin-bottom: var(--space-6); }
+.products-header h1 { font-size: var(--text-3xl); margin-bottom: var(--space-1); }
+.products-header p { color: var(--color-dark-grey); }
+.products-toolbar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap; }
+.products-search-wrap { flex: 1; max-width: 400px; }
+.products-sort { display: flex; align-items: center; gap: var(--space-2); }
+.products-sort label { font-size: var(--text-sm); font-weight: var(--font-medium); color: var(--color-dark-grey); white-space: nowrap; }
+.products-sort select { padding: var(--space-2) var(--space-4); border: 1px solid var(--color-grey); border-radius: var(--radius-md); font-size: var(--text-sm); background: var(--color-white); cursor: pointer; }
+.products-layout { display: flex; gap: var(--space-8); }
+.products-content { flex: 1; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.products-empty { text-align: center; padding: var(--space-16); color: var(--color-dark-grey); }
+.products-empty h3 { margin-bottom: var(--space-2); color: var(--color-charcoal); }
+
+.pagination { display: flex; justify-content: center; align-items: center; gap: var(--space-2); margin-top: var(--space-10); }
+.pagination-btn { padding: var(--space-2) var(--space-4); border: 1px solid var(--color-grey); border-radius: var(--radius-md); background: var(--color-white); font-size: var(--text-sm); font-weight: var(--font-medium); cursor: pointer; transition: all var(--transition-fast); color: var(--color-charcoal); }
+.pagination-btn:hover:not(:disabled) { border-color: var(--color-accent); color: var(--color-accent); }
+.pagination-btn.active { background: var(--color-accent); color: var(--color-white); border-color: var(--color-accent); }
+.pagination-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .products-layout { flex-direction: column; } .products-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); } .products-toolbar { flex-direction: column; align-items: stretch; } .products-search-wrap { max-width: 100%; } }
