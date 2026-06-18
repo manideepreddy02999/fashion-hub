@@ -1,13 +1,56 @@
-.wishlist-page { padding: var(--space-8) 0 var(--space-16); }
-.wishlist-title { font-size: var(--text-2xl); margin-bottom: var(--space-6); }
-.wishlist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
-.wishlist-item-wrap { display: flex; flex-direction: column; }
-.wishlist-item-actions { display: flex; gap: var(--space-2); margin-top: var(--space-2); }
-.wishlist-item-actions .btn-block { flex: 1; }
-.wishlist-empty { text-align: center; padding: var(--space-20) 0; }
-.wishlist-empty-icon { font-size: 64px; color: var(--color-grey); margin-bottom: var(--space-6); }
-.wishlist-empty h2 { margin-bottom: var(--space-2); }
-.wishlist-empty p { color: var(--color-dark-grey); margin-bottom: var(--space-6); }
-@media (max-width: 1024px) { .wishlist-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) { .wishlist-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .wishlist-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); } }
+.wishlist-page {
+  padding: var(--space-8) 0 var(--space-16);
+}
+.wishlist-title {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-6);
+}
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+.wishlist-item-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.wishlist-item-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+.wishlist-item-actions .btn-block {
+  flex: 1;
+}
+.wishlist-empty {
+  text-align: center;
+  padding: var(--space-20) 0;
+}
+.wishlist-empty-icon {
+  font-size: 64px;
+  color: var(--color-grey);
+  margin-bottom: var(--space-6);
+}
+.wishlist-empty h2 {
+  margin-bottom: var(--space-2);
+}
+.wishlist-empty p {
+  color: var(--color-dark-grey);
+  margin-bottom: var(--space-6);
+}
+@media (max-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}

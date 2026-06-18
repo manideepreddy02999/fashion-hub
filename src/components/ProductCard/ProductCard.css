@@ -3,7 +3,9 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
   position: relative;
   cursor: pointer;
 }
@@ -171,8 +173,12 @@
   font-size: 13px;
 }
 
-.star-filled { color: #f59e0b; }
-.star-empty { color: var(--color-grey); }
+.star-filled {
+  color: #f59e0b;
+}
+.star-empty {
+  color: var(--color-grey);
+}
 
 .rating-count {
   font-size: var(--text-xs);

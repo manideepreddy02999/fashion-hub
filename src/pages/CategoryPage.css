@@ -1,10 +1,52 @@
-.category-page { animation: fadeIn 0.3s ease; }
-.category-hero { padding: var(--space-16) var(--space-8); text-align: center; color: var(--color-white); }
-.category-hero h1 { font-size: var(--text-4xl); margin-bottom: var(--space-2); color: var(--color-white); }
-.category-hero p { font-size: var(--text-lg); opacity: 0.9; }
-.category-results { padding: var(--space-6) 0 var(--space-4); }
-.category-results p { color: var(--color-dark-grey); font-size: var(--text-sm); }
-.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); padding-bottom: var(--space-16); }
-@media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 768px) { .products-grid { grid-template-columns: repeat(2, 1fr); } .category-hero { padding: var(--space-10) var(--space-4); } .category-hero h1 { font-size: var(--text-2xl); } }
-@media (max-width: 480px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-3); } }
+.category-page {
+  animation: fadeIn 0.3s ease;
+}
+.category-hero {
+  padding: var(--space-16) var(--space-8);
+  text-align: center;
+  color: var(--color-white);
+}
+.category-hero h1 {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-2);
+  color: var(--color-white);
+}
+.category-hero p {
+  font-size: var(--text-lg);
+  opacity: 0.9;
+}
+.category-results {
+  padding: var(--space-6) 0 var(--space-4);
+}
+.category-results p {
+  color: var(--color-dark-grey);
+  font-size: var(--text-sm);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  padding-bottom: var(--space-16);
+}
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .category-hero {
+    padding: var(--space-10) var(--space-4);
+  }
+  .category-hero h1 {
+    font-size: var(--text-2xl);
+  }
+}
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
