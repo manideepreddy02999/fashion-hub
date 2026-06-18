@@ -45,26 +45,42 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <label>Email</label>
-              <input type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="input-group">
               <label>Password</label>
-              <input type="password" name="password" placeholder="Enter your password" value={formData.password} onChange={handleChange} required />
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block btn-lg auth-submit" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary btn-block btn-lg auth-submit"
+              disabled={loading}
+            >
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
 
           <div className="auth-footer">
-            <p>Don't have an account? <a onClick={() => navigate("/register")}>Register</a></p>
-          </div>
-
-          <div className="auth-demo-info">
-            <p><strong>Demo User:</strong> rahul@example.com / password123</p>
-            <p><strong>Admin:</strong> admin@fashionhub.com / admin123</p>
+            <p>
+              Don't have an account?{" "}
+              <a onClick={() => navigate("/register")}>Register</a>
+            </p>
           </div>
         </div>
       </div>

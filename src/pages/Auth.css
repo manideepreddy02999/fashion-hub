@@ -91,15 +91,3 @@
 .auth-footer a:hover {
   text-decoration: underline;
 }
-.auth-demo-info {
-  margin-top: var(--space-6);
-  padding: var(--space-4);
-  background: var(--color-light-grey);
-  border-radius: var(--radius-md);
-  text-align: center;
-}
-.auth-demo-info p {
-  font-size: var(--text-xs);
-  color: var(--color-dark-grey);
-  margin-bottom: var(--space-1);
-}
