@@ -69,7 +69,7 @@ const Products = () => {
     <div className="products-page page">
       <div className="container">
         <div className="products-header">
-          <h1>All Products</h1>
+          <h1>All Categories</h1>
           <p>{filteredProducts.length} products found</p>
         </div>
 

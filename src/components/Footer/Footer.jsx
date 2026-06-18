@@ -40,7 +40,7 @@ const Footer = () => {
           <h4>Quick Links</h4>
           <ul>
             <li><a onClick={() => navigate("/")}>Home</a></li>
-            <li><a onClick={() => navigate("/products")}>All Products</a></li>
+            <li><a onClick={() => navigate("/products")}>All Categories</a></li>
             <li><a onClick={() => navigate("/men")}>Men</a></li>
             <li><a onClick={() => navigate("/women")}>Women</a></li>
             <li><a onClick={() => navigate("/kids")}>Kids</a></li>

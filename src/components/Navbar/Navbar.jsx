@@ -43,6 +43,14 @@ const Navbar = () => {
       <ul className="navbar-links">
         <li>
           <a
+            className={isActive("/") ? "active-link" : ""}
+            onClick={() => navigate("/")}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
             className={isActive("/men") ? "active-link" : ""}
             onClick={() => navigate("/men")}
           >
@@ -70,17 +78,10 @@ const Navbar = () => {
             className={isActive("/products") ? "active-link" : ""}
             onClick={() => navigate("/products")}
           >
-            All Products
+            All Categories
           </a>
         </li>
-        <li>
-          <a
-            className={isActive("/") ? "active-link" : ""}
-            onClick={() => navigate("/")}
-          >
-            Home
-          </a>
-        </li>
+        
       </ul>
 
       <div className="nav-search-container">
