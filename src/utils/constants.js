@@ -40,20 +40,6 @@ export const BRANDS = [
   "ShadesMaster",
 ];
 
-export const SIZES = {
-  clothing: ["XS", "S", "M", "L", "XL", "XXL"],
-  jeans: ["28", "30", "32", "34", "36", "38"],
-  shoes: ["4", "5", "6", "7", "8", "9", "10", "11"],
-  kids: ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y"],
-  freeSize: ["Free Size"],
-};
-
-export const COLORS = [
-  "White", "Black", "Blue", "Red", "Green", "Navy",
-  "Pink", "Yellow", "Brown", "Grey", "Beige", "Maroon",
-  "Olive", "Teal", "Purple", "Gold", "Silver", "Tan",
-];
-
 export const ORDER_STATUSES = {
   pending: { label: "Pending", color: "#f59e0b" },
   confirmed: { label: "Confirmed", color: "#3b82f6" },

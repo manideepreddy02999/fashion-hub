@@ -1,34 +1,42 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { STORAGE_KEYS } from "../utils/constants";
+import { AuthContext } from "./AuthContext";
 
 export const WishlistContext = createContext();
 
-const loadWishlistFromStorage = () => {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEYS.WISHLIST);
-    return saved ? JSON.parse(saved) : [];
-  } catch {
-    return [];
-  }
-};
-
 export const WishlistProvider = ({ children }) => {
-  const [wishlistItems, setWishlistItems] = useState(loadWishlistFromStorage());
+  const { user } = useContext(AuthContext);
+  const [wishlistItems, setWishlistItems] = useState([]);
+
+  const getStorageKey = () => {
+    return user ? `${STORAGE_KEYS.WISHLIST}_${user.id}` : STORAGE_KEYS.WISHLIST;
+  };
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEYS.WISHLIST, JSON.stringify(wishlistItems));
-  }, [wishlistItems]);
+    try {
+      const saved = localStorage.getItem(getStorageKey());
+      setWishlistItems(saved ? JSON.parse(saved) : []);
+    } catch {
+      setWishlistItems([]);
+    }
+  }, [user]);
 
   const addToWishlist = (product) => {
     setWishlistItems((prev) => {
       const exists = prev.find((item) => item.id === product.id);
       if (exists) return prev;
-      return [...prev, product];
+      const next = [...prev, product];
+      localStorage.setItem(getStorageKey(), JSON.stringify(next));
+      return next;
     });
   };
 
   const removeFromWishlist = (productId) => {
-    setWishlistItems((prev) => prev.filter((item) => item.id !== productId));
+    setWishlistItems((prev) => {
+      const next = prev.filter((item) => item.id !== productId);
+      localStorage.setItem(getStorageKey(), JSON.stringify(next));
+      return next;
+    });
   };
 
   const isInWishlist = (productId) => {
