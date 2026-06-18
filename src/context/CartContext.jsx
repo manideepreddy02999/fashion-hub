@@ -1,6 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { AuthContext } from "./AuthContext";
+import { STORAGE_KEYS } from "../utils/constants";
 import {
+  setCartItems as setCartItemsAction,
   addToCart as addToCartAction,
   removeFromCart as removeFromCartAction,
   updateQuantity as updateQuantityAction,
@@ -12,6 +15,20 @@ export const CartContext = createContext();
 export const CartContextProvider = ({ children }) => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
+  const { user } = useContext(AuthContext);
+
+  const getStorageKey = () => {
+    return user ? `${STORAGE_KEYS.CART}_${user.id}` : STORAGE_KEYS.CART;
+  };
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(getStorageKey());
+      dispatch(setCartItemsAction(saved ? JSON.parse(saved) : []));
+    } catch {
+      dispatch(setCartItemsAction([]));
+    }
+  }, [user, dispatch]);
 
   const addToCart = (product) => {
     const cartItem = {
@@ -20,19 +37,19 @@ export const CartContextProvider = ({ children }) => {
         product.cartItemId ||
         `${product.id}_${product.selectedSize || "default"}_${product.selectedColor || "default"}_${Date.now()}`,
     };
-    dispatch(addToCartAction(cartItem));
+    dispatch(addToCartAction({ item: cartItem, storageKey: getStorageKey() }));
   };
 
   const removeFromCart = (cartItemId) => {
-    dispatch(removeFromCartAction(cartItemId));
+    dispatch(removeFromCartAction({ cartItemId, storageKey: getStorageKey() }));
   };
 
   const updateQuantity = (cartItemId, quantity) => {
-    dispatch(updateQuantityAction({ cartItemId, quantity }));
+    dispatch(updateQuantityAction({ cartItemId, quantity, storageKey: getStorageKey() }));
   };
 
   const clearCart = () => {
-    dispatch(clearCartAction());
+    dispatch(clearCartAction({ storageKey: getStorageKey() }));
   };
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
