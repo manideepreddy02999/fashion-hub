@@ -35,9 +35,10 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo" onClick={() => navigate("/")}>
-        <span className="logo-text">
+        <img src="/logo.png" alt="FashionHub Logo" className="logo-image" />
+        {/* <span className="logo-text">
           Fashion<span>Hub</span>
-        </span>
+        </span> */}
       </div>
 
       <ul className="navbar-links">
