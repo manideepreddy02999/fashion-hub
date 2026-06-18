@@ -76,7 +76,7 @@ const Footer = () => {
           <div className="footer-contact">
             <p><HiOutlinePhone /> +91 98765 43210</p>
             <p><HiOutlineMail /> support@fashionhub.com</p>
-            <p><HiOutlineLocationMarker /> Mumbai, India</p>
+            <p><HiOutlineLocationMarker /> Telangana, India</p>
           </div>
         </div>
       </div>
