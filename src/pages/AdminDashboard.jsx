@@ -135,7 +135,6 @@ const AdminDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
       await productService.deleteProduct(id);
-      alert("Product deleted!");
       fetchProducts();
     } catch (error) {
       console.error("Error deleting:", error);

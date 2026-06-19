@@ -20,7 +20,7 @@ const Login = () => {
     setError("");
     const result = await login(formData.email, formData.password);
     if (result.success) {
-      alert("Login successful! Welcome back, " + result.user.name);
+      // alert("Login successful! Welcome back, " + result.user.name);
       if (result.user.role === "admin") {
         navigate("/admin");
       } else {

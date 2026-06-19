@@ -11,7 +11,6 @@ const Footer = () => {
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
     if (email.trim()) {
-      alert("Thank you for subscribing!");
       setEmail("");
     }
   };

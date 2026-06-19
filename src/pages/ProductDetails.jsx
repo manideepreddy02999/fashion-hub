@@ -54,7 +54,6 @@ const ProductDetails = () => {
       selectedColor,
       quantity,
     });
-    alert("Added to cart!");
   };
 
   const renderStars = (rating) => {
