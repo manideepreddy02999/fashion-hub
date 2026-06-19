@@ -3,18 +3,24 @@ import api from "./api";
 const orderService = {
   createOrder: async (orderData) => {
     try {
-      const response = await api.get(`/orders?userId=${orderData.userId}`);
-      const userOrders = response.data;
-      const orderNumber = userOrders.length + 1;
+      const categoryStr = orderData.items && orderData.items[0] && orderData.items[0].category 
+        ? String(orderData.items[0].category).toUpperCase().substring(0, 4) 
+        : "GENE";
+      
+      const randomNum = Math.floor(Math.random() * 900000) + 100000;
+      const orderNumber = `${categoryStr}${randomNum}`;
+      
+      const id = `ORD-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 
       return api.post("/orders", {
         ...orderData,
+        id,
         orderNumber,
         orderDate: new Date().toISOString(),
         status: "pending",
       });
     } catch (error) {
-      console.error("Error generating order number:", error);
+      console.error("Error creating order:", error);
       throw error;
     }
   },

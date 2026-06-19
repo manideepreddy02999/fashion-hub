@@ -32,6 +32,7 @@ const Profile = () => {
             <nav className="profile-nav">
               <a className="profile-nav-item active"><FiUser /> Account Details</a>
               <a className="profile-nav-item" onClick={() => navigate("/orders")}><FiPackage /> My Orders</a>
+              {isAdmin && <a className="profile-nav-item" onClick={() => navigate("/all-orders")}><FiPackage /> All Orders</a>}
               <a className="profile-nav-item" onClick={() => navigate("/wishlist")}><FiHeart /> Wishlist</a>
               {isAdmin && <a className="profile-nav-item" onClick={() => navigate("/admin")}><FiMapPin /> Admin Panel</a>}
               <a className="profile-nav-item logout" onClick={handleLogout}><FiLogOut /> Logout</a>

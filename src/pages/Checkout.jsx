@@ -43,6 +43,7 @@ const Checkout = () => {
           productId: item.id,
           productName: item.productName,
           productPrice: item.productPrice,
+          category: item.category,
           quantity: item.quantity,
           size: item.selectedSize,
           color: item.selectedColor,

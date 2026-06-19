@@ -15,6 +15,7 @@ import Orders from "../pages/Orders";
 import Checkout from "../pages/Checkout";
 import NotFound from "../pages/NotFound";
 import AdminDashboard from "../pages/AdminDashboard";
+import AllOrders from "../pages/AllOrders";
 import AdminRoute from "../components/AdminRoute/AdminRoute";
 import useAuth from "../hooks/useAuth";
 
@@ -67,6 +68,14 @@ const AppRoutes = () => {
         element={
           <AdminRoute>
             <AdminDashboard />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/all-orders"
+        element={
+          <AdminRoute>
+            <AllOrders />
           </AdminRoute>
         }
       />
