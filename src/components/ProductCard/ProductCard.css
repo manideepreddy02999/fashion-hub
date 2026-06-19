@@ -197,3 +197,25 @@
     transform: translateY(0);
   }
 }
+
+.product-card.out-of-stock:hover .product-card-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.product-card.out-of-stock:hover .product-card-actions {
+  z-index: 2;
+}
+
+.out-of-stock-text {
+  font-size: var(--text-xs);
+  color: #ef4444; /* bright red */
+  font-weight: var(--font-bold);
+  margin-left: var(--space-2);
+}

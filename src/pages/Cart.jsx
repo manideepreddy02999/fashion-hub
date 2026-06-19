@@ -8,7 +8,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cartItems, cartTotal, clearCart, cartCount } = useCart();
+  const { cartItems, checkoutItems, cartTotal, clearCart, cartCount } = useCart();
   const navigate = useNavigate();
 
   const tax = Math.round(cartTotal * TAX_RATE);
@@ -68,7 +68,7 @@ const Cart = () => {
               <span>Total</span>
               <span>{formatPrice(orderTotal)}</span>
             </div>
-            <button className="btn btn-primary btn-block btn-lg" onClick={() => navigate("/checkout")}>
+            <button className="btn btn-primary btn-block btn-lg" onClick={() => navigate("/checkout")} disabled={checkoutItems.length === 0}>
               Proceed to Checkout
             </button>
             <button className="btn btn-ghost btn-block" onClick={() => navigate("/products")}>

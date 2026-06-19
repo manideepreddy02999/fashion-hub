@@ -2,6 +2,8 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import { STORAGE_KEYS } from "../utils/constants";
 import { AuthContext } from "./AuthContext";
 
+import productService from "../services/productService";
+
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
@@ -15,7 +17,23 @@ export const WishlistProvider = ({ children }) => {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(getStorageKey());
-      setWishlistItems(saved ? JSON.parse(saved) : []);
+      const parsedItems = saved ? JSON.parse(saved) : [];
+      setWishlistItems(parsedItems);
+      
+      if (parsedItems.length > 0) {
+        productService.getProducts()
+          .then((res) => {
+            const allProducts = res.data;
+            const updatedItems = parsedItems.map((item) => {
+              const freshItem = allProducts.find((p) => p.id === item.id);
+              return freshItem ? freshItem : item;
+            });
+            // Update state and storage only if there's a difference (simplification: just update)
+            setWishlistItems(updatedItems);
+            localStorage.setItem(getStorageKey(), JSON.stringify(updatedItems));
+          })
+          .catch((err) => console.error("Error refreshing wishlist:", err));
+      }
     } catch {
       setWishlistItems([]);
     }
@@ -51,6 +69,28 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
+  const refreshWishlist = () => {
+    try {
+      const saved = localStorage.getItem(getStorageKey());
+      const parsedItems = saved ? JSON.parse(saved) : [];
+      if (parsedItems.length > 0) {
+        productService.getProducts()
+          .then((res) => {
+            const allProducts = res.data;
+            const updatedItems = parsedItems.map((item) => {
+              const freshItem = allProducts.find((p) => p.id === item.id);
+              return freshItem ? freshItem : item;
+            });
+            setWishlistItems(updatedItems);
+            localStorage.setItem(getStorageKey(), JSON.stringify(updatedItems));
+          })
+          .catch((err) => console.error("Error refreshing wishlist:", err));
+      }
+    } catch {
+      // ignore
+    }
+  };
+
   const wishlistCount = wishlistItems.length;
 
   return (
@@ -62,6 +102,7 @@ export const WishlistProvider = ({ children }) => {
         isInWishlist,
         toggleWishlist,
         wishlistCount,
+        refreshWishlist,
       }}
     >
       {children}

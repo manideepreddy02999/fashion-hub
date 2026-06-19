@@ -44,7 +44,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card" onClick={() => navigate(`/product/${product.id}`)}>
+    <div className={`product-card ${!product.inStock ? "out-of-stock" : ""}`} onClick={() => navigate(`/product/${product.id}`)}>
       <div className="product-card-image">
         <img src={product.productImageUrl} alt={product.productName} />
 
@@ -66,8 +66,8 @@ const ProductCard = ({ product }) => {
         </button>
 
         <div className="product-card-actions">
-          <button className="btn btn-primary" onClick={handleAddToCart}>
-            <FaShoppingCart /> Add to Cart
+          <button className="btn btn-primary" onClick={handleAddToCart} disabled={!product.inStock}>
+            <FaShoppingCart /> {product.inStock ? "Add to Cart" : "Out of Stock"}
           </button>
         </div>
       </div>
@@ -87,6 +87,7 @@ const ProductCard = ({ product }) => {
         <div className="product-card-rating">
           <div className="rating-stars">{renderStars(product.rating)}</div>
           <span className="rating-count">({product.reviewCount})</span>
+          {!product.inStock && <span className="out-of-stock-text">Out of Stock</span>}
         </div>
       </div>
     </div>

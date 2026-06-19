@@ -8,7 +8,7 @@ import { TAX_RATE, FREE_SHIPPING_THRESHOLD, SHIPPING_CHARGE } from "../utils/con
 import "./Checkout.css";
 
 const Checkout = () => {
-  const { cartItems, cartTotal, clearCart } = useCart();
+  const { checkoutItems: cartItems, cartTotal, clearCart } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

@@ -33,20 +33,27 @@ const CartItem = ({ item }) => {
           <div className="cart-item-quantity">
             <button
               onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-              disabled={item.quantity <= 1}
+              disabled={item.quantity <= 1 || item.inStock === false}
             >
               −
             </button>
             <span>{item.quantity}</span>
             <button
               onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
+              disabled={item.inStock === false}
             >
               +
             </button>
           </div>
-          <span className="cart-item-price">
-            {formatPrice(item.productPrice * item.quantity)}
-          </span>
+          {item.inStock === false ? (
+            <span className="cart-item-price" style={{ color: '#ef4444', fontWeight: 'bold' }}>
+              Out of Stock
+            </span>
+          ) : (
+            <span className="cart-item-price">
+              {formatPrice(item.productPrice * item.quantity)}
+            </span>
+          )}
         </div>
       </div>
     </div>

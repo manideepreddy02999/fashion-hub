@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiTrash2 as TrashIcon, FiHeart } from "react-icons/fi";
 import ProductCard from "../components/ProductCard/ProductCard";
@@ -7,9 +7,15 @@ import useCart from "../hooks/useCart";
 import "./Wishlist.css";
 
 const Wishlist = () => {
-  const { wishlistItems, removeFromWishlist } = useWishlist();
+  const { wishlistItems, removeFromWishlist, refreshWishlist } = useWishlist();
   const { addToCart } = useCart();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (refreshWishlist) {
+      refreshWishlist();
+    }
+  }, []);
 
   const handleMoveToCart = (product) => {
     addToCart({
@@ -47,8 +53,8 @@ const Wishlist = () => {
             <div key={item.id} className="wishlist-item-wrap">
               <ProductCard product={item} />
               <div className="wishlist-item-actions">
-                <button className="btn btn-primary btn-sm btn-block" onClick={() => handleMoveToCart(item)}>
-                  Move to Cart
+                <button className="btn btn-primary btn-sm btn-block" onClick={() => handleMoveToCart(item)} disabled={!item.inStock}>
+                  {item.inStock ? "Move to Cart" : "Out of Stock"}
                 </button>
                 <button className="btn btn-ghost btn-sm" onClick={() => removeFromWishlist(item.id)}>
                   <TrashIcon /> Remove

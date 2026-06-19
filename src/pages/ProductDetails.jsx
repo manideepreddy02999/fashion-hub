@@ -93,6 +93,7 @@ const ProductDetails = () => {
             <div className="pd-rating">
               <div className="rating-stars">{renderStars(product.rating)}</div>
               <span className="pd-rating-text">{product.rating} ({product.reviewCount} reviews)</span>
+              {!product.inStock && <span className="out-of-stock-text" style={{ color: '#ef4444', fontWeight: 'bold', marginLeft: 'var(--space-2)' }}>Out of Stock</span>}
             </div>
 
             <div className="pd-price">
@@ -147,8 +148,8 @@ const ProductDetails = () => {
             </div>
 
             <div className="pd-actions">
-              <button className="btn btn-primary btn-lg pd-add-cart" onClick={handleAddToCart}>
-                <FaShoppingCart /> Add to Cart
+              <button className="btn btn-primary btn-lg pd-add-cart" onClick={handleAddToCart} disabled={!product.inStock}>
+                <FaShoppingCart /> {product.inStock ? "Add to Cart" : "Out of Stock"}
               </button>
               <button className={`btn btn-outline btn-lg pd-wishlist-btn ${inWishlist ? "active" : ""}`} onClick={() => toggleWishlist(product)}>
                 {inWishlist ? <FaHeart /> : <FaRegHeart />} {inWishlist ? "Wishlisted" : "Wishlist"}
