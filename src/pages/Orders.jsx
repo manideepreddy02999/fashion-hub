@@ -48,7 +48,7 @@ const Orders = () => {
               <div key={order.id} className="order-card">
                 <div className="order-header">
                   <div>
-                    <h3>Order #{order.id}</h3>
+                    <h3>Order #{order.orderNumber || order.id}</h3>
                     <p className="order-date">{formatDate(order.orderDate)}</p>
                   </div>
                   <span className="order-status" style={{ background: status.color + "20", color: status.color }}>
