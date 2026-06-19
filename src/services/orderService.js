@@ -3,13 +3,11 @@ import api from "./api";
 const orderService = {
   createOrder: async (orderData) => {
     try {
-      const categoryStr = orderData.items && orderData.items[0] && orderData.items[0].category 
-        ? String(orderData.items[0].category).toUpperCase().substring(0, 4) 
-        : "GENE";
-      
+      const categoryStr = "FHUB";
+
       const randomNum = Math.floor(Math.random() * 900000) + 100000;
       const orderNumber = `${categoryStr}${randomNum}`;
-      
+
       const id = `ORD-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
 
       return api.post("/orders", {
